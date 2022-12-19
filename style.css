@@ -1,0 +1,37 @@
+header{
+    height: 10vh;
+}
+
+main{
+    height: 85vh;
+    background-color: aquamarine;
+
+}
+
+footer{
+    height: 5vh;
+}
+
+.grid {
+    height: 70vh;
+    width: 70vh;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cells {
+    width: 10%;
+    height: 10%;
+    border: 1px solid black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.cells.selected {
+    background-color: aqua;
+}
