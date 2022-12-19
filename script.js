@@ -37,12 +37,15 @@ function createdCells(number){
 
 buttonPlay.addEventListener('click', function(){
 
+    // Modifico pulsante Play in New Game, per permettere all'utente di riniziare la partita
+    buttonPlay.innerText= 'New Game';
+
     // Pulisco la griglia onde evitare che ad ogni click si generino 100 caselle
     grid.innerHTML = '';
 
     // Genero le bombe
     bomb = generateBomb(1, 100, 16);
-    console.log('Bombe:' + bomb);
+    // console.log(bomb);
 
 
     // Mi creo un for che mi vada a creare 100 celle
@@ -55,8 +58,10 @@ buttonPlay.addEventListener('click', function(){
 
         // Inserisco un azione al clic di ogni cella che mi vada ad inserire la class css selected
         cell.addEventListener('click', function () {
+            
             cell.classList.add('selected');
             console.log(i);
+
             // Faccio in modo che ad ogni click il mio punteggio aumenti (TODO: verificare come rendere cliccabile una sola volta la cella)
             score++
             console.log(`Il tuo punteggio è ${score}`);
