@@ -40,6 +40,11 @@ buttonPlay.addEventListener('click', function(){
     // Pulisco la griglia onde evitare che ad ogni click si generino 100 caselle
     grid.innerHTML = '';
 
+    // Genero le bombe
+    bomb = generateBomb(1, 100, 16);
+    console.log('Bombe:' + bomb);
+
+
     // Mi creo un for che mi vada a creare 100 celle
     for (let i = 1; i <= 100; i++) {
 
