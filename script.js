@@ -1,3 +1,24 @@
+// -----
+// CREO FUNZIONI
+// -----
+
+// Funzione che mi generi l'array con le bombe
+function generateBomb(min, max, numbersOfBomb) {
+
+    const randomNumbers = [];
+    
+    do {
+        const myRandomNumber = Math.floor(Math.random() * (max - min)) + min;
+        randomNumbers.push(myRandomNumber);
+    }
+    
+    while (randomNumbers.length < numbersOfBomb);
+
+
+    return randomNumbers
+}
+
+
 // Prendo il bottone play e la griglia dal dom
 
 const grid = document.getElementById('grid');
