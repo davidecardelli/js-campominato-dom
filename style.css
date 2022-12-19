@@ -35,3 +35,7 @@ footer{
 .cells.selected {
     background-color: aqua;
 }
+
+.cells.bomb {
+    background-color: red;
+}
