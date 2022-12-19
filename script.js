@@ -24,10 +24,14 @@ buttonPlay.addEventListener('click', function(){
 
         const cell = createdCells(i);
 
+        score = 0;
+
         // Inserisco un azione al clic di ogni cella che mi vada ad inserire la class css selected
         cell.addEventListener('click', function () {
             cell.classList.add('selected');
             console.log(i);
+            score++;
+            console.log(`Il tuo punteggio è ${score}`);
           })
   
         grid.appendChild(cell);
