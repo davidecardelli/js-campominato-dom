@@ -23,14 +23,16 @@ buttonPlay.addEventListener('click', function(){
     for (let i = 1; i <= 100; i++) {
 
         const cell = createdCells(i);
-
-        score = 0;
+        
+        // Inizializzo il punteggio
+        score = 0
 
         // Inserisco un azione al clic di ogni cella che mi vada ad inserire la class css selected
         cell.addEventListener('click', function () {
             cell.classList.add('selected');
             console.log(i);
-            score++;
+            // Faccio in modo che ad ogni click il mio punteggio aumenti (TODO: verificare come rendere cliccabile una sola volta la cella)
+            score++
             console.log(`Il tuo punteggio è ${score}`);
           })
   
