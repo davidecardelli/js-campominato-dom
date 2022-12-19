@@ -45,7 +45,7 @@ buttonPlay.addEventListener('click', function(){
 
     // Genero le bombe
     bomb = generateBomb(1, 100, 16);
-    // console.log(bomb);
+    console.log(bomb);
 
 
     // Mi creo un for che mi vada a creare 100 celle
@@ -54,27 +54,25 @@ buttonPlay.addEventListener('click', function(){
         const cell = createdCells(i);
         
         // Inizializzo il punteggio
-        score = 0
+        score = -1
 
         // Inserisco un azione al clic di ogni cella che mi vada ad inserire la class css selected
         cell.addEventListener('click', function () {
 
-            for (let i = 0; i < bomb.length; i++) {
-                if (bomb[i] === i) {
+            score++
+
+            for (let y = 0; y < bomb.length; y++) {
+                if (bomb[y] === i) {
                     cell.classList.add('bomb');
+                    alert(`Hai perso, il tuo punteggio è ${score}`);
                 }
                 else {
                     cell.classList.add('selected');
+                
                 }
             }
 
-            
-            // console.log(i);
-
-            // // Faccio in modo che ad ogni click il mio punteggio aumenti (TODO: verificare come rendere cliccabile una sola volta la cella)
-            // score++
-            // console.log(`Il tuo punteggio è ${score}`);
-          })
+        })
   
         grid.appendChild(cell);
     }
