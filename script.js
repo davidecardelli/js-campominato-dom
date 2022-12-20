@@ -23,6 +23,8 @@ function generateBomb(min, max, numbersOfBomb) {
 
 const grid = document.getElementById('grid');
 const buttonPlay = document.getElementById('play-button');
+const totalPoint = document.getElementById('total-point');
+
 
 // Creo funzione che mi consenta di creare le cells con all'interno il numero corrispondente
 
@@ -34,7 +36,6 @@ function createdCells(number){
 }
 
 // Aggiungo event listner al bottone play
-
 buttonPlay.addEventListener('click', function(){
 
     // Modifico pulsante Play in New Game, per permettere all'utente di riniziare la partita
@@ -43,8 +44,14 @@ buttonPlay.addEventListener('click', function(){
     // Pulisco la griglia onde evitare che ad ogni click si generino 100 caselle
     grid.innerHTML = '';
 
+    // Preparo la variabile che mi porti il punteggio
+    let score = 0;
+    const totalBombs = 16;
+    const maxPoint = 100 - totalBombs; 
+    console.log('Il punteggio massimo è: ' + maxPoint)
+
     // Genero le bombe
-    bomb = generateBomb(1, 100, 16);
+    const bomb = generateBomb(1, 100, totalBombs);
     console.log(bomb);
 
 
@@ -53,24 +60,26 @@ buttonPlay.addEventListener('click', function(){
 
         const cell = createdCells(i);
         
-        // Inizializzo il punteggio
-        score = -1
-
         // Inserisco un azione al clic di ogni cella che mi vada ad inserire la class css selected
         cell.addEventListener('click', function () {
 
-            score++
-
-            for (let y = 0; y < bomb.length; y++) {
-                if (bomb[y] === i) {
-                    cell.classList.add('bomb');
-                    alert(`Hai perso, il tuo punteggio è ${score}`);
-                }
-                else {
-                    cell.classList.add('selected');
-                
-                }
+            // Controllo che una cella non sia stata cliccata: se cell contiene selected, mi butta fuori
+            if (cell.classList.contains('selected')) {
+                return;
             }
+
+            cell.classList.add('selected');
+
+            const itsABomb = bomb.includes(parseInt(cell.innerText));
+            console.log(itsABomb);
+
+            if (itsABomb) {
+                cell.classList.add('bomb');
+            }
+            else {
+                totalPoint.innerText = 'Il tuo punteggio è: ' + ++score;
+            }
+
 
         })
   
