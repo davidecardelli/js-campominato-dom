@@ -52,8 +52,6 @@ buttonPlay.addEventListener('click', function(){
 
     // Genero le bombe
     const bomb = generateBomb(1, 100, totalBombs);
-    console.log(bomb);
-
 
     // Mi creo un for che mi vada a creare 100 celle
     for (let i = 1; i <= 100; i++) {
@@ -71,13 +69,16 @@ buttonPlay.addEventListener('click', function(){
             cell.classList.add('selected');
 
             const itsABomb = bomb.includes(parseInt(cell.innerText));
-            console.log(itsABomb);
 
             if (itsABomb) {
                 cell.classList.add('bomb');
+                totalPoint.innerText = 'Hai perso, il tuo punteggio è: ' + score;
             }
             else {
                 totalPoint.innerText = 'Il tuo punteggio è: ' + ++score;
+                if (maxPoint === score) {
+                    totalPoint.innerText = 'Hai vinto! Hai totalizzato ' + score + ' punti';
+                }
             }
 
 
